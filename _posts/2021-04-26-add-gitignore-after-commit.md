@@ -1,6 +1,6 @@
 ---
 title: how to update .gitIgnore but it is not applied after it committed (.gitIgnore 추가적용)
-date: 2023-03-20 16:30:00 +0900
+date: 2021-04-26 16:30:00 +0900
 categories: [GIT]
 tags: [git, gitignore, cache]     # TAG names should always be lowercase
 authors: [gonnichiwa]
