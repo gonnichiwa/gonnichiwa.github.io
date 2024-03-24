@@ -30,4 +30,4 @@ rubyinstaller-devkit-3.3.0-1-x64.exe)
 1. open new `cmd`
 2. ``` \> bundle exec jekyll serve ```
 > 구동 확인
-[](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FciANyq%2FbtsF2xbjBfA%2Fz1nCdUEvjPCqPh83vVJvB1%2Fimg.png)
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FciANyq%2FbtsF2xbjBfA%2Fz1nCdUEvjPCqPh83vVJvB1%2Fimg.png)
