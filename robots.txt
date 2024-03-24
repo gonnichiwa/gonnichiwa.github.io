@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gonnichiwa.github.io/sitemap.xml
