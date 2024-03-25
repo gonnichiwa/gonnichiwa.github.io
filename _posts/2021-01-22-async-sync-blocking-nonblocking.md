@@ -43,6 +43,7 @@ authors: [gonnichiwa]
 
 ### 블로킹(Blocking) | 논블로킹(Nonblocking)
 - `..ee`를 호출한 함수`caller`의 다음 행동을 막는다(blocking) ? Y(블로킹) : N(논블로킹)
+- 그럼, `caller`는 `..ee`실행끝날때까지 대기탄다? Y(블로킹)
 - 즉, `..ee`호출시점에 `제어권`을 `..ee`가 가지고 간다? Y(블로킹) : N(논블로킹)
 
 - `제어권` : 쉽게 얘기해서 내가 돌리는 앱의 다음 코드라인을 뭘 실행할지? 핸들링하는 주체 권한
@@ -50,6 +51,8 @@ authors: [gonnichiwa]
 
 ### 동기(Sync) | 비동기(ASync)
 - `caller`가 `..ee`의 `완료 여부`를 체크하는지? Y(sync) : N(async)
+#### 공통점
+`..ee` 는 작업완료하면 콜백 호출함.
 
 
 ## CASE
