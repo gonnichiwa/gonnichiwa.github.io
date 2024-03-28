@@ -112,6 +112,7 @@ $ gradlew build
   + 운영 config정보는 운영서버에 숨겨놓고 외부에서 쓰고 싶다
 
 ---
+
 ```java
 package com.aidaboat.user;
 
@@ -137,8 +138,54 @@ public class UserApplication {
 - 운영 config파일은 운영서버 내 특정 경로 config/application.yml 로 읽어들이도록
 + `optional:` 줘서 로컬에서 빌드 시 해당 (운영config) 파일 없어도 구동되도록
   - `application.yml`에 active profile을 `prod`로 놓고 돌리면 당연히 안돌겠지...
+- spring boot의 .yml 우선순위는 [문서와 같다](https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config)
++ 본 `UserApplication.java` 에서는
+  1. optional:file:./config/application-prod.yml
+  1. -Dspring.profiles.active=dev
+  1. classpath:application.yml
+- 순으로 프로파일 config 설정 함
+
 
 ---
+
+```java
+package com.aidaboat.user.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class DataSourceConfig {
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driver;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
+
+    @Bean
+    public DataSource dataSource() {
+        return DataSourceBuilder.create()
+            .driverClassName(this.driver)
+            .url(this.url)
+            .username(this.username)
+            .password(this.password)
+            .build();
+    }
+}
+```
+- DataSourceConfig.java
+- `application-{profiles}.yml` 의 k,v 를 UserApplication.java 실행 시점에 DI함
+
+---
+
 ```yml
 server:
   port: 8081
@@ -185,4 +232,6 @@ spring:
 - [중계와 중개: https://www.joongang.co.kr/article/2811365#home](https://www.joongang.co.kr/article/2811365#home)
 - https://support.atlassian.com/jira-cloud-administration/docs/what-is-the-free-jira-cloud-plan/
 - https://www.java.com/releases/matrix/#note2
+- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config-loading-yaml
+- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-profiles.html
 - https://jojoldu.tistory.com/267
