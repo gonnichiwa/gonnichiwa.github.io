@@ -20,6 +20,11 @@ authors: [gonnichiwa]
 
 ### 업무적
 - 별도 작성
++ 중개와 중계 
+  - `seller`, `buyer` 사이에서 `3자`가..
+  - 중개 : `seller`-`buyer` 계약을 도와주고 수수료받음. ex) 공인중개사.
+  - 중계 : `seller` 에게 물건사서 `buyer`에게 물건팜. 계약의 당사자가 됨.
+- [https://www.joongang.co.kr/article/2811365#home](https://www.joongang.co.kr/article/2811365#home)
 
 ## 개발환경
 + openjdk 21
@@ -47,9 +52,10 @@ authors: [gonnichiwa]
   - 그외 여러가지 기능제한 있겠으나, 써보면서 느껴보는걸로
   + 120일 액티베이션 모니터링한다함, 안그러면 deactivate 됨. 맞는번역인지 확실치 않음, ~~100일간 마늘먹듯이 매일 들어가야하나?~~
     - 모니터링 기준은 로그인 완료, 페이지 클릭 로그들
+    - [jira free plan doc](https://support.atlassian.com/jira-cloud-administration/docs/what-is-the-free-jira-cloud-plan/)
 
 ## 개발&운영 서버 환경
-- docker (니까 linux겠지)
+- docker on linux
 - 그외 tbd
 
 ## 이 장에서의 수행 범위
@@ -85,7 +91,7 @@ $ git commit -m "initial commit"
 - sourcetree 새탭(+)에서 Add
 - push
 
-+ .gitIgnore 다른곳에 흩어져있어도 함께 적용됨
++ .gitIgnore 다른곳에 각자 흩어져있어도 함께 적용됨
   - ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrvrgP%2FbtsF9CrGVWH%2Fr5GFTYOAtwpxVfrPq4dIfK%2Fimg.png)
 
 
@@ -138,7 +144,11 @@ public class UserApplication {
 - 운영 config파일은 운영서버 내 특정 경로 config/application.yml 로 읽어들이도록
 + `optional:` 줘서 로컬에서 빌드 시 해당 (운영config) 파일 없어도 구동되도록
   - `application.yml`에 active profile을 `prod`로 놓고 돌리면 당연히 안돌겠지...
-- spring boot의 .yml 우선순위는 [문서와 같다](https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config)
+- spring boot의 .yml 참조 우선순위는
+- [문서와 같다](https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config)
+- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config-loading-yaml
+- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-profiles.html
+
 + 본 `UserApplication.java` 에서는
   1. optional:file:./config/application-prod.yml
   1. -Dspring.profiles.active=dev
@@ -204,7 +214,7 @@ spring:
 ```
 - application.yml
 - local,dev,prod 포함하는 common config 역할
-- 위 `spring.profiles.active: local` 설정으로 놔도 intellij 설정이 우선됨, 아래 그림 참조
+- 위 `spring.profiles.active: local` 설정으로 놔도 command line설정 이 우선됨, commandline 설정은 intellij에서 설정 창으로 가능함.
 - intellij 설정 : `ctrl`+`shift`+`a`, `edit configuration`, `active profiles`
 ![](https://blog.kakaocdn.net/dn/v2Cc5/btsGcOKJeZg/amDjFzz6wva7GJ4MEsEBX0/img.png)
 ![](https://blog.kakaocdn.net/dn/uF6CA/btsF86NsWj0/O7SHlRfBKqnGkIEe71ksT1/img.png)
@@ -226,12 +236,3 @@ spring:
 ```
 - application-local.yml
 - 이외 `application-dev.yml`, `application-prod.yml`도 함께 생성해줌.
-
-
-### 참고
-- [중계와 중개: https://www.joongang.co.kr/article/2811365#home](https://www.joongang.co.kr/article/2811365#home)
-- https://support.atlassian.com/jira-cloud-administration/docs/what-is-the-free-jira-cloud-plan/
-- https://www.java.com/releases/matrix/#note2
-- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html#boot-features-external-config-loading-yaml
-- https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-profiles.html
-- https://jojoldu.tistory.com/267
