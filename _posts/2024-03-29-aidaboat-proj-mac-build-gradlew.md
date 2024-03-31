@@ -102,17 +102,18 @@ intelilj project close (`File` - `Close project`) 해주고
   - `Ctrl` + `D` 하여 저장
 
   5. 확인
-  - 열려있는 터미널 끄고 다시 열어봄.
-  ```
+  - 열려있는 터미널 끄고 다시 열어봄.  
+  ```bash
   $ java -version
-openjdk version "21.0.2" 2024-01-16
-OpenJDK Runtime Environment (build 21.0.2+13-58)
-OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode, sharing)
-  
+    openjdk version "21.0.2" 2024-01-16
+    OpenJDK Runtime Environment (build 21.0.2+13-58)
+    OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode, sharing)
   $ javac -version
   javac 21.0.2
   ```
   끝났으니 다시 gradlew 돌려보자
+
+  
 
   
 
