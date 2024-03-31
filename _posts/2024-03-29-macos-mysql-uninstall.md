@@ -1,5 +1,5 @@
 ---
-title: gradlew build spring boot proj on mac
+title: mysql uninstall, reinstall on macos
 date: 2024-03-28 18:15:00 +0900
 categories: [MAC, MYSQL, MARIADB]
 tags: [mysql, mariadb, mac]  # TAG names should always be lowercase
