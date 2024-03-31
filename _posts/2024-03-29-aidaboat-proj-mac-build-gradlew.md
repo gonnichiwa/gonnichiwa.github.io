@@ -56,7 +56,7 @@ intelilj project close (`File` - `Close project`) 해주고
 
 ~~로컬에서 docker 돌려야하나? [여기처럼](https://dev.gmarket.com/72)~~
   
-## 설치과정
+## OpenJDK 설치과정
   1. [openjdk21 다운로드: macOS / x64(내껀 인텔CPU니까, M1박은 CPU라면 AArch64 다운받을것)](https://jdk.java.net/21/)
   - 본인은 openjdk-21.0.1_macos-aarch64_bin.tar.gz 다운받음
     
@@ -113,7 +113,9 @@ intelilj project close (`File` - `Close project`) 해주고
   ```
   끝났으니 다시 gradlew 돌려보자
 
+```
+$ ./gradlew build
+...
+BUILD SUCCESSFUL in 10s
+```
   
-
-  
-
