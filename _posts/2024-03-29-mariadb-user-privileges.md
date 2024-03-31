@@ -14,8 +14,8 @@ authors: [gonnichiwa]
 >버전확인  
 >select VERSION();  
 
->**유저들 보기**
->dbname:mysql  
+>**유저들 보기**  
+>use mysql;  
 >select * from USER;
 
 >**유저생성**  
