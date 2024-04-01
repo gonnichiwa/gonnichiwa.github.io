@@ -42,7 +42,7 @@ C:\로 옮겨서 실행
 ![](https://blog.kakaocdn.net/dn/bXCihr/btsGgbfd1Vr/obKZvFOJa3L18fJXC9Bj4k/img.png)
 [INS-32014] 지정된 Oracle 기본 위치(C:\)이(가) 부적합합니다.
 [INS-32056] 지정한 Oracle 기본 위치에 기존 중앙 인벤토리 위치 C:\Program Files\Oracle\Inventory이(가) 포함되어 있습니다.
-- virtualbox 같은 oracle 제품 미리 설치되어 있는 경우 뜰 수 있음.  
+- virtualbox 같은 oracle 제품 미리 설치되어 있는 경우 뜰 수 있음, 그래서.. 다음   
 
 ![](https://blog.kakaocdn.net/dn/t6GF6/btsGfJC6isc/A1taYdmI0KiPLUQUqUW1Xk/img.png)
 - C:\oracle19c로 디렉토리 생성함.  
@@ -72,10 +72,34 @@ i7-10700K, 32G 기준
 cmd 로 접속
 ```
 \>sqlplus
-```
-![](https://blog.kakaocdn.net/dn/EwQeP/btsGfwDUzm3/OOGcAQ8NMTmG2vTSZzkT6k/img.png)
+```  
+![](https://blog.kakaocdn.net/dn/EwQeP/btsGfwDUzm3/OOGcAQ8NMTmG2vTSZzkT6k/img.png)  
 사용자 : system 
-비번 : 메모해둔비번 (타이핑해도 입력안보이므로 그대로 치고 들어간다.)
+비번 : 메모해둔비번 (타이핑해도 입력안보이므로 그대로 치고 들어간다.)  
+
+`SYS` : `SYSDBA` 권한을 갖는 기본 계정
+`SYSTEM` : `SYSOPER` 권한을 갖는 기본 계정  
+
+`SYSDBA` 권한 : `SYSOPER` + DB생성, 삭제, root 권한
++ `SYSOPER` 권한
+  - 생성되어있는 DB의 인스턴스 startup, shutdown, mount, dismount, close권한을 갖음.
+  - 백업, 로그이용한 복구 recover 권한
+
+- `sys` 계정도 접속시험 해본다.
+```
+\>sqlplus
+```  
+![](https://blog.kakaocdn.net/dn/bcq5r9/btsGfwKM8ix/OGBUQDkk2YsMqiwSEKPnG0/img.png)  
+비번 입력은 그냥 `엔터` 하거나 설치할때 입력&메모해놓은 비번 사용함.
+<br/>
+```
+SQL> show user;
+USER은 "SYS"입니다
+SQL> exit
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0에서 분리되었습니다.
+C:\Users\..>
+```
 
 <br/>
 <br/>
@@ -97,6 +121,9 @@ SID 기본값 orcl
 사용자 이름은 system
 하단 `테스트` 눌러서 좌하단 `상태:성공` 확인
 
+![](https://blog.kakaocdn.net/dn/wfvc4/btsGgbzEEdA/ORq8yz2LRrpG9wrx08GWV0/img.png)  
+`sys` 계정도 접속 시험
+
 
 ### dbeaver 접속 시험
 ---
@@ -110,6 +137,8 @@ Driver 구해서 따로 경로 세팅 해줄 수 있음. Driver Settings..
 ![](https://blog.kakaocdn.net/dn/bi9uA2/btsGfKaYX4B/fulMV1zsLwCObFj6VMGduK/img.png)
 커넥션 성공
 
+![](https://blog.kakaocdn.net/dn/uPy6O/btsGhnGvrh6/JhRyDr9bcLrkOQLN00MwR1/img.png)
+`sys` 계정도 접속 시험
 
 #### 참고
 https://javacoding.tistory.com/113  
