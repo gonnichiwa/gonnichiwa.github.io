@@ -1,0 +1,55 @@
+---
+title: oracle keyword dic (명령어 dic)
+date: 2024-04-01 07:00:00 +0900
+categories: [ORACLE, DIC]
+tags: [oracle, keyword]  # TAG names should always be lowercase
+authors: [gonnichiwa]
+---
+
+## [oracle] __C##__ (12c 이상 유저 추가시 `ORA-65096` 관련)
+`C##username`은 `sys가 부여하는 common user` 라는 뜻으로 해석 가능하겠음.  
+>`common user` :  `CDB$ROOT`와 여러 PDB들을 핸들링할 수 있는 user  
+>
+>`local user` :  `PDB`로 context change 하여 생성 해야 함. PDB안의 본인이름 스키마에서만 권한가짐.
+<br/>
+
+굳이 이렇게 안쓰고싶다면 dba계정(system)으로 아래 처럼 변경하여 처리 할 수 있음..
+```
+ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
+```
+
+### 왜이렇게 됐나?  
+12c 부터 DB 아키텍처가 변경되어서  (Multitanent arch란다)  
+`CDB`, `PDB`로 나뉜다.
+
+`CDB`  : multitenant container database 로 PDB, root container들을 총칭하는 용어  
+`PDB`들을 포함한다.  
+
+<br/>
+`PDB(pluggable db)`  
+각 PDB마다 `root(root container)`가 있고  
+`root`가 제공하는 유저는 `SYS`와 `SYSTEM`뿐임.  
+`root`는 user data를 안가지고 있음(CDB가 가지고 있음.).  
+<br/>
+`인사`,`재무`와 같은 대업무 DB(PDB)들를 pluggable하게 가져갈 수 있단다.<br/>
+(어떻게? 물려있는 CDB의 PDB 연결 변경으로)  
+
+<br/>
+
+See also
+https://docs.oracle.com/database/121/CNCPT/cdblogic.htm#CNCPT89257  
+https://dba.stackexchange.com/questions/129098/why-have-to-write-c-for-user-creation-in-oracle-12c
+
+## [oracle] PURGE
+
+* 테이블 삭제 시
+drop table 테이블명;
+* 테이블 완전 삭제하기 (휴지통에 저장되지 않음)
+DROP TABLE 테이블명 purge; 
+* 휴지통 비우기
+purge recyclebin;
+
+* 휴지통에 있는 테이블 복원
+FLASHBACK TABLE 테이블명 TO BEFORE DROP
+
+출처: https://sfeg.tistory.com/342 [즐거운:티스토리]
