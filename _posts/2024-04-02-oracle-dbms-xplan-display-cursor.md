@@ -83,8 +83,8 @@ WHERE ROWNUM <= 3;
 >**쿼리 결과 전체 데이터count는 1000인데 DB client tool 에서 초기 50건만 가져오게 셋 되어있으면 XPLAN 뜨기 불가할 수 있음**
 
 >**Dbeaver Community 수행결과 cannot fetch plan for ... 메세지 띄우며 수행 불가할 수 있음**  
->**Dbeaver pro버전 필요한 기능으로 보이므로 Oracle SQL Developer 사용해야함.**  
->**DBEAVER PRO 유료이나 .ac.kr 이메일 도메인 있으면 라이센스 발급이 가능함.**
+>**Dbeaver pro버전 쓰거나 Oracle SQL Developer 사용해야함.**  
+>**DBEAVER PRO 유료이나 .ac.kr 이메일 도메인 있으면 학생용 라이센스 발급이 가능함.**
 
 ```sql
 SELECT * FROM 
