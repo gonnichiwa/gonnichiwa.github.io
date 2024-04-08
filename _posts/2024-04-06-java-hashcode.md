@@ -22,10 +22,10 @@ authors: [gonnichiwa]
 ```
 - 다른 String값이지만 hashCode() 결과값이 같다.  
 - 왜? 문자열을 ascii 값으로 가져와서 정수 연산을 하기 때문
-  - 문자열이 꽤 다른데? 응 ascii 값 적은것 큰것 조합에 따라 같은 값이 나올 수 있다는 뜻.
+  - 위 코드 `a`와 `b`의 문자열이 꽤 다른데? 응 ascii 값 적은것 큰것 조합에 따라 같은 값이 나올 수 있다는 뜻.
   ![](https://blog.kakaocdn.net/dn/bFwwAQ/btsGsr2JMIc/KSop79HSSmFXmkDOzj2IDk/img.png)
   ![](https://blog.kakaocdn.net/dn/ntObv/btsGp1LtRn4/6YQZThydVjdDhpqk4ykM01/img.png)
-  - 위 사진들 보면 `char`정수 값들 중 작은 값 큰값 조합해서 연산 하다보니 같은 값이 나올 수 있음.
+  - 위 그림들 보면 `char`정수 값들 중 작은 값 큰값 조합해서 연산 하다보니 같은 값이 나올 수 있음.
 
 
 ### 그래서?
@@ -57,7 +57,7 @@ public class HashCodeTest {
         Person b = new Person("abc");
 
         assertThat(a.equals(b), is(true)); // (동등성 비교) 이름이 같을때 같게 주고 싶다면? equals 오버라이드
-        assertThat(a.hashCode(), is(b.hashCode())); // (동일성 비교) 이름이 같을 때 같게 주고 싶다면? hashCode 오버라이드
+        assertThat(a.hashCode(), is(b.hashCode())); // (동일성 비교) string 값이 같을 때 두 인스턴스가 동일하다고 기준 잡고 싶다면? hashCode 오버라이드
     }
     @Test
     public void hashMapPut(){
