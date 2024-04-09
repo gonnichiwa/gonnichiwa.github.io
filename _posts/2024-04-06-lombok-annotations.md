@@ -12,7 +12,7 @@ authors: [gonnichiwa]
 
 ### @ToString
 @ToString 은 멤버들 toString오버라이드.
-@ToString(exclude = "[멤버변수이름]")으로 특정 멤버를 제외하고 toString()오버라이드 할 수 있음.  
+@ToString(exclude = "멤버변수이름")으로 특정 멤버를 제외하고 toString()오버라이드 할 수 있음.  
 
 ### @Getter, @Setter
 @Getter, @Setter는 클래스레벨 뿐만 아니라 **필드레벨에서 생성가능** 하다.  
