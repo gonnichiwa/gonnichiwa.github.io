@@ -81,7 +81,7 @@ authors: [gonnichiwa]
 ### 비동기(ASync) - 논블로킹(Nonblocking)
 - `caller`가 `..ee` 의 완료여부 체크 안함.
 - `..ee`는 끝나면 `콜백`으로 알려줄 뿐
-+ 웹사이트들 
++ 웹사이트들 (ajax)
   - 여러 asset파일들(img,js,...) 읽는작업 완료되면 콜백 실행(화면띄워줌) 하는 구조
 
 ### 비동기(ASync) - 블로킹(Blocking)

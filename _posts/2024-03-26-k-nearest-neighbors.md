@@ -6,6 +6,10 @@ tags: [python, nlp, ml, scikit-learn, knn]  # TAG names should always be lowerca
 authors: [gonnichiwa]
 ---
 
+## k-최근접 이웃 분류
+
+- `분류` : `샘플`을 몇개의 `클래스` 중 하나로 분류
+
 ## k-최근접 이웃을 사용하여 도미와 빙어를 구분하기
 - 생선의 종류`클래스` 중 하나를 구별해 내는 문제를 `분류`라고 함. (classification)
 - 본문 제목처럼 `2개 중 하나`를 구별하는 문제를 `이진 분류`(binary classification)이라고 함.

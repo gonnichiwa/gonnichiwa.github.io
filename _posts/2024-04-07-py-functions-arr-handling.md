@@ -31,8 +31,10 @@ print(np.arange(1,3,0.2))
 # [1.  1.2 1.4 1.6 1.8 2.  2.2 2.4 2.6 2.8]
 ```
 
-#### colmun_stack()
+#### colmun_stack([arr, arr])
 ```py
+fish_length = np.array([1,2,3])
+fish_weight = np.array([4,5,6])
 tuple = np.column_stack([fish_length, fish_weight]) # tuple, immutable
 print(tuple)
 #array([[1, 4],
@@ -46,6 +48,7 @@ aa = np.concatenate(([1,2,3],[1,4,5,6]))
 print('aa={}'.format(aa)) # aa=[1 2 3 1 4 5 6]
 bb = np.concatenate((np.ones(4), np.zeros(2))) # bb=[1. 1. 1. 1. 0. 0.]
 ```
+- concatenate : (사슬같이) 잇다
 
 #### ones(), zeros()
 ```py
@@ -112,7 +115,7 @@ smelt_weight = [6.7, 7.5, 7.0, 9.7]
 
 plt.scatter(bream_length, bream_weight) # bream x,y
 plt.scatter(smelt_length, smelt_weight, marker='^') # 산점도의 점 모양
-# marker 모양 모음 : 
+# marker 모양 모음 : https://matplotlib.org/stable/api/markers_api.html
 plt.xlabel('length')
 plt.ylabel('weight')
 plt.show()
