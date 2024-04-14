@@ -5,9 +5,9 @@ categories: [ORACLE,FUNCTION]
 tags: [oracle,db,partition by,row_number,rank]  # TAG names should always be lowercase
 authors: [gonnichiwa]
 ---
-`
+
 ## 왜?
-- PARTITION BY blabla ORDER BY `gg` 의 기준이 동률일때,  
+- PARTITION BY `UITEM_ID` ORDER BY `APPLY_DT` 의 기준이 동률일때,  
 ROW_NUMBER()를 써서 공동순위를 없앨건지?
 RANK()|DENSE_RANK() 를 써서 공동순위를 써야할건지의 판단,  
 ROW_NUMBER()는 `동률없는 정렬순서`가 보장되는지부터 확인해야함.
