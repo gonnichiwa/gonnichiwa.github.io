@@ -1,13 +1,13 @@
 ---
 title: jpa n+1 problem
-date: 2024-04-14 14:05:00 +0900
+date: 2017-02-14 14:05:00 +0900
 categories: [JAVA, SPRING, JPA]
 tags: [java, spring, JPA]  # TAG names should always be lowercase
 authors: [gonnichiwa]
 ---
 
 
-### 지금까지 이해한것.
+### What?
 
 + Member와 Order의 연관관계 있을경우. (1:N)
   - 연관관계 엔티티간 fetch 정책이
@@ -28,14 +28,14 @@ authors: [gonnichiwa]
     - select * from Order where memberId = 5
 
 + 즉 N+1 문제란
-  - 처음 조회된 데이터 rowcount 수**(N)**만큼 연관관계 테이블의 데이터 조회쿼리**(1)** 날리는 문제
+  - 처음 조회된 데이터 rowcount 수**(N)**만큼 연관관계 테이블의 데이터 조회쿼리**(N+1)** 날리는 문제
 
 
 ### 그래서 사용할 수 있는 개발 정책
 
 #### **페치 조인 사용**
 ```sql
-select m from member m join fetch m.orders
+(jpql) select m from member m join fetch m.orders
 ```
 
 ```sql
@@ -62,12 +62,20 @@ where member_id in (?,?,?,?,?)
 ```
 
 
-#### **하이버네이트 SUBSELECT**
+#### **하이버네이트 SUBSELECT, SUBSET**
+
 ```java
 @org.hibernate.annotations.Fetch(FetchMode.SUBSELECT)
 @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
 private List<Order> orders = new ArrayList<Order>();
 ```
+
+```java
+@Fetch(FetchMode.SUBSET)
+@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+private List<Order> orders = new ArrayList<Order>();
+```
+
 
 - size 수만큼 in절의 **서브쿼리**로 들어감
 ```sql
