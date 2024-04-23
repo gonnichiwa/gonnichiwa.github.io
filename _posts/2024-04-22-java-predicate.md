@@ -1,5 +1,5 @@
 ---
-title: java modifiers - protected, default
+title: java Predicate
 date: 2024-04-22 17:34:00 +0900
 categories: [JAVA, SPRING]
 tags: [predicate, lambda, spring cloud gateway]  # TAG names should always be lowercase
