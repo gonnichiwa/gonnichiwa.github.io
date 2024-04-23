@@ -30,7 +30,8 @@ the theory of structure on which later chemistry was predicated
 
 
 ## 예제
-- simple 1
+- simple 1  
+
 ```java
 @Test
 public void predicate(){
@@ -43,6 +44,7 @@ public void predicate(){
 
 }
 ```
+
 - lesserthan.test(int) 로 참거짓 구분함.
 
 - simple 2 (chaining)
