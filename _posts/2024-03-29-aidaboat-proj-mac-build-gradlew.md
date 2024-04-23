@@ -58,7 +58,7 @@ intelilj project close (`File` - `Close project`) 해주고
   
 ## OpenJDK 설치과정
   1. [openjdk21 다운로드: macOS / x64(내껀 인텔CPU니까, M1박은 CPU라면 AArch64 다운받을것)](https://jdk.java.net/21/)
-  - 본인은 openjdk-21.0.1_macos-aarch64_bin.tar.gz 다운받음
+  - 본인은 openjdk-21.0.1_macos-x64_bin.tar.gz 다운받음
     
   2. 체크섬 확인
   - 파일이 올바른 것인지?
