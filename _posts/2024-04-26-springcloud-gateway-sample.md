@@ -99,6 +99,7 @@ services:
 `runtime-discovery` 디렉토리에서 `pack-images.sh` 실행
 
 - windows라면 `git bash` 에서 실행
+
 ```sh
 $ ./pack-images.sh
 Performing a clean Maven build
@@ -125,6 +126,7 @@ Performing a clean Maven build
 ```
 
 - docker-compose.yml 실행
+
 ```sh
 $ docker-compose up
 ```
