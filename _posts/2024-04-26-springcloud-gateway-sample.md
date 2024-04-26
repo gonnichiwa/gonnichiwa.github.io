@@ -132,15 +132,23 @@ $ docker-compose up
 - 이후 `docker-desktop` 띄우면 아래 컨테이너 3개 실행중임을 확인 가능
 ![](https://blog.kakaocdn.net/dn/lPUU9/btsGZYsxfyk/GSo1NbJFFKrgZt0DGDIVa1/img.png)
 
-> `greeting-service` 의 경우 `connection-refused` 에러 로그가 있을 수 있음. `gateway`나 `registry` 구동중에 `service` 구동 완료되어 접속 시도 실패하여 뜸.
+> `greeting-service` 의 경우 `connection-refused` 에러 로그가 있을 수 있음.
 
-> `docker-desktop`에서 `greeting-service`만 stop 한뒤 다시 startup 하면 에러 메세지 없음 확인 가능.
+> `gateway`나 `registry` 구동중에 `service` 구동 완료되어 접속 시도 실패하여 뜸.
+
+> `docker-desktop`에서 `greeting-service`만 `stop` 한뒤 다시 `startup` 하면 에러 메세지 없음 확인 가능.
+
 
 ## 결과 확인
 
+이후 `작성 목적` 목차에 나와있는대로 실행해보면 결과 잘 나옴
+
 First, Check that the Greeting Service is Hidden:  
 
-The Greeting Service operates on port 8762 and is hidden inside the Docker network. Let's try to call it from your favorite browser using http://localhost:8762/greeting. You should be told that "the site can't be reached" by your browser. This is because the Greeting Service is hidden inside the Docker network (as if it were behind a company firewall). It shouldn't be possible for us to talk to the greeting service directly. Instead, you’ll see an error page similar to the one below.
+The Greeting Service operates on port 8762 and is hidden inside the Docker network. Let's try to call it from your favorite browser using http://localhost:8762/greeting.  
+You should be told that "the site can't be reached" by your browser.  
+This is because the Greeting Service is hidden inside the Docker network (as if it were behind a company firewall).  
+It shouldn't be possible for us to talk to the greeting service directly.  Instead, you’ll see an error page similar to the one below.
 
 Next, Access the Greeting Service via the Gateway:
 Now, Navigate your browser to http://localhost:8080/service/greeting. You should now get a valid response with content similar to the "Hello, World" JSON shown below:
@@ -152,4 +160,5 @@ The microservices on the Docker network are each registering themselves with the
 
 To view the current list of registered services, point your browser at http://localhost:8080/registry. You should see a screen similar to the one below.
 
+![](https://blog.kakaocdn.net/dn/dbLOFg/btsGXRPzoud/XVo8JYDKUcnaScLK3Obxa0/img.png)
 
