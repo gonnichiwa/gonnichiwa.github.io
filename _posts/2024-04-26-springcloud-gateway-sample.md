@@ -12,9 +12,11 @@ https://spring.io/blog/2019/07/01/hiding-services-runtime-discovery-with-spring-
 
 돌려보고 구조 분석 기록을 위함.
 
+
 ## 실행
 
 https://spring.io/blog/2019/07/01/hiding-services-runtime-discovery-with-spring-cloud-gateway
+
 
 ### downloads
 
@@ -164,3 +166,8 @@ To view the current list of registered services, point your browser at http://lo
 
 ![](https://blog.kakaocdn.net/dn/dbLOFg/btsGXRPzoud/XVo8JYDKUcnaScLK3Obxa0/img.png)
 
+
+## 이외 설정 관련 참고
+
+- 컨테이너 베이스 배포 시 
+https://ksh-coding.tistory.com/137
