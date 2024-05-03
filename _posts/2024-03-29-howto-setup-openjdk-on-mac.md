@@ -18,7 +18,7 @@ authors: [gonnichiwa]
   2. 체크섬 확인
   - 파일이 올바른 것인지?
   - `올바르다` : 파일이 '특정 이유'로 `변조` 된것이 아닌지? 확인
-  ```
+  ```bash
   $ shasum -a 256 openjdk-21.0.2_macos-x64_bin.tar.gz
   ```
   ![](https://blog.kakaocdn.net/dn/bk9sZ8/btsGeaOzB1z/iwvSfukhW3YkmhgBnL0iD0/img.png)
@@ -32,7 +32,7 @@ authors: [gonnichiwa]
   3. `openjdk-21.0.1_macos-x64_bin.tar.gz` 파일 압축 해제
   - `tar`는 파일/디렉토리 여러개 한개의 `.tar` 파일로 묶은것. (용량을 압축시키는게 아님)
   - `gz` 압축 알고리즘 써서 `용량 압축` 시킨 파일
-  ```
+  ```bash
   $ mkdir $HOME/OpenJDK
   $ sudo tar -xvf openjdk-21.0.2_macos-x64_bin.tar.gz -C .$HOME/OpenJDK
     ./
@@ -51,19 +51,19 @@ authors: [gonnichiwa]
   
   4. 환경변수 연결 (zshell)
   - 본인은 zshell(~~이뻐서~~) 씀
-  ```
+  ```bash
   $ cat >> .zshrc
   ```
   - 커맨드 입력 (bash라면 `cat >> .bash_profile` 쓰셈)
   - 아래 한줄씩 복붙
-  ```
+  ```bash
   export JAVA_HOME=$HOME/OpenJDK/jdk-21.0.2.jdk/Contents/Home
   export PATH=$JAVA_HOME/bin:$PATH
   ```
   - `Ctrl` + `D` 하여 저장
 
   <br/>
-  
+
   5. 확인
   - 열려있는 터미널 끄고 다시 열어봄.  
   ```bash
