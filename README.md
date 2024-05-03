@@ -24,6 +24,8 @@ rubyinstaller-devkit-3.3.0-1-x64.exe)
 > 구동 확인
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FciANyq%2FbtsF2xbjBfA%2Fz1nCdUEvjPCqPh83vVJvB1%2Fimg.png)
 
+3. 브라우저에서 http://localhost:4000 진입.
+
 <br/>
 
 ---
