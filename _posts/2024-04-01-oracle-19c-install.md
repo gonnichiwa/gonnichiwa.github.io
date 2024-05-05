@@ -69,7 +69,7 @@ i7-10700K, 32G 기준
 
 ### cmd 접속 시험
 ---
-cmd 로 접속
+cmd(sqlplus) 로 접속
 ```
 \>sqlplus
 ```  
@@ -77,10 +77,18 @@ cmd 로 접속
 사용자 : system 
 비번 : 메모해둔비번 (타이핑해도 입력안보이므로 그대로 치고 들어간다.)  
 
-`SYS` : `SYSDBA` 권한을 갖는 기본 계정
-`SYSTEM` : `SYSOPER` 권한을 갖는 기본 계정  
+- `계정(SYS,SYSTEM)`과 `권한(SYSDBA, SYSOPER)`이 분리되어 있음.
 
-`SYSDBA` 권한 : `SYSOPER` + DB생성, 삭제, root 권한
++ `SYS` 
+  - `SYSDBA` || `SYSOPER` 권한을 `가질 수 있는` 기본 계정  
+  - `sys as sysdba` || `sys as sysoper` 로 인증
++ `SYSTEM` 
+  - `SYSOPER` 권한을 갖는 기본 계정  
+
+<br/>
+
++ `SYSDBA` 권한 
+  - `SYSOPER` + DB생성, 삭제, root 권한
 + `SYSOPER` 권한
   - 생성되어있는 DB의 인스턴스 startup, shutdown, mount, dismount, close권한을 갖음.
   - 백업, 로그이용한 복구 recover 권한
@@ -109,7 +117,7 @@ C:\Users\..>
 [sql developer download](https://www.oracle.com/database/sqldeveloper/technologies/download/) 받아 그대로 실행  
 <br/>
 ![](https://blog.kakaocdn.net/dn/Q0dnN/btsGfxQobfs/7KFKTY3nCps0vAKaV3z8m1/img.png)  
-주로 쓰고 있는 JDK 버전이 따로 있을 수 있으므로(21버전 주로 쓰는 spring boot 라던지..) JDK Included 버전을 다운 받음.
+OS 환경변수로 쓰고 있는 JDK 버전이 따로 있을 수 있으므로(21버전 주로 쓰는 spring boot 라던지..) JDK Included 버전을 다운 받음.
 
 
 ![](https://blog.kakaocdn.net/dn/NVyAQ/btsGex4vSAI/MzUfmgcVmzBFvHEt0DvPx1/img.png)  
