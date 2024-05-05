@@ -2,7 +2,7 @@
 title: java stream
 date: 2024-05-04 10:15:43 +0900
 categories: [JAVA]
-tags: [lambda, stream]  # TAG names should always be lowercase
+tags: [lambda, stream, predicate, optional]  # TAG names should always be lowercase
 authors: [gonnichiwa]
 ---
 
@@ -139,13 +139,31 @@ public void primitiveWrapperStream(){
 
 - 위 `intStream` 변수 그대로 `boxed()` 할 경우 error 발생함.
 > java.lang.IllegalStateException: stream has already been operated upon or closed
-- 이미 수행됐던것에는 더 이상 다른 뭔가를 할 수 없도록 함.
-
 
 ```java
 Stream<Integer> integStream = intStream.boxed(); // java.lang.IllegalStateException: stream has already been operated upon or closed
 ```
+- 이미 수행됐던것에는 더 이상 다른 뭔가를 할 수 없도록 함.
 
+- 그래서 스트림 재사용 방법을 아래처럼 구현함
+
+```java
+@Test
+public void stream_재사용(){
+    // List로 데이터 가지고 있다가
+    List<String> list = Stream.of("Eric", "Elena", "Java")
+            .filter(name -> name.contains("a"))
+            .collect(Collectors.toList());
+    // stream 생성해서 바로 씀.
+    Optional<String> firstElement = list.stream().findFirst();
+    Optional<String> anyElement = list.stream().findAny();
+
+    firstElement.ifPresent(name -> System.out.printf("firstElement=%s \n", name)); // firstElement=Elena 
+    anyElement.ifPresent(name -> System.out.printf("anyElement=%s", name)); // anyElement=Elena
+}
+```
+
+<br/>
 
 #### 정규식으로 문자열 자르고 요소별 스트림 생성
 
@@ -167,6 +185,7 @@ public void 정규식_문자열_split_and_stream(){
   3. combiner(패러랠계산결과합치기)
 
 > 1개일때 (accumulator)
+
 ```java
 @Test
 public void reduceTestOne(){
@@ -229,24 +248,58 @@ public void reduceTestThree(){
 
 - `parallel()` 에서 `combiner`가 호출됨. (안넣으면 `combiner` 호출없음)
 + 결과 로그 찍히는걸로 미루어 아래와 같이 병렬계산됨을 보임.
-  - 1,2,3,4,5 에서
+  - `Stream.of(1, 2, 3, 4, 5)` 에서
   1. 1+2 계산    3
   2. 4+5 계산    9
   3. 3 + `2.(9)` 계산 12
   4. `1.(3)` + `3.(12)` 계산 15
 - 병렬연산을 가능케함
 
+<br/>
+
+#### LazyInvocation
+
+- `stream.collect(), forEach()`와 같이 정의된 스트림이 `동작수행 해야 할 때` 정의된 스트림 실행됨.
+
+```java
+@Test
+public void lazyInvocationTest() {
+    List<String> list = Arrays.asList("Eric", "Elena", "Java");
+    // 스트림 정의만 했을 때.
+    Stream<String> stream = list.stream()
+            .filter(el -> {
+                Counter.wasCalled();
+                return el.contains("a");
+            });
+    // .filter() 수행없음
+    System.out.println(Counter.counter); // 0
+
+    // collect()로 정의한 stream 동작
+    List<String> data = stream.collect(Collectors.toList());
+    // .filter() 동작확인
+    System.out.println(Counter.counter); // 3
+}
 
 
+```
 
 ## 감상
 
-배열과 컬렉션의 함수형 처리 가능하게 함으로써  
-데이터 `처리`와 `표현`이 특화 분리된 기능 설계를 가능하게 함.  
-여기서 `처리`란 데이터 그 자체의 `filtering`, `sorting`, `mapping` 등 있겠음  
++ 배열과 컬렉션의 함수형 처리 가능하게 함으로써  
+  - 데이터 `처리`와 `표현`이 특화 분리된 기능 설계를 가능하게 함.  
+  - 여기서 `처리`란 데이터 그 자체의 `filtering`, `sorting`, `mapping` 등 있겠음  
+
+  <br/>
+
++ 실무에서의 복잡한 ~~여러개 테이블로 조인된 db 한방쿼리와 난무하는 프로시저~~ 쿼리로직과 modify 어려운 설계구조를 개선할 좋은 재료
+  - application단의 `persistance`계층에서 에서 호출, 생성하는 db쿼리들을 최대한 단순화
+  - 이후 `service`단에서 함수형으로 데이터 stream 생성 조합후 딜리버리
+  - `serviceImpl` 레이어의 비즈로직과 
+  - **대용량 데이터로딩 시점 app단의 memory usage 측정 필요하겠음**
+  - Collectors.summarizingInt(), Collectors.averageInt(), Matching(anyMatch(), allMatch()), 외 그룹핑(Collectors.groupingBy()) 등으로 쿼리 보조가 가능하겠음.
 
 
-## 용어
+## 관련 용어
 
 불변성 : 함수 외부에서 데이터 수정이 없음을 보장함.
 
@@ -254,4 +307,5 @@ public void reduceTestThree(){
 ## 참고
 
 [Java 스트림 Stream (1) 총정리](https://futurecreator.github.io/2018/08/26/java-8-streams/)  
+[Java 스트림 Stream (2) 고급](https://futurecreator.github.io/2018/08/26/java-8-streams-advanced/)
 [함수형 프로그래밍 특장점](https://yoondii.tistory.com/124)
