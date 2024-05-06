@@ -56,18 +56,6 @@ intelilj project close (`File` - `Close project`) 해주고
   
 [이전 포스트](https://gonnichiwa.github.io/posts/aidaboat-1-openproject/#%EA%B8%B0%EC%88%A0%EC%A0%81)에서 개발환경 java 21로 맞추기로 했으니 mac 환경설정도 이에 따라 맞춰준다.
 
-- 이렇게 타기종 머신에서 clone받아 환경 세팅할때 자잘한 문제가 생기면 시간 잡아먹고 ~~집에 못가는~~ 요인이 될텐데
-
-+ 추가 개발인력이 들어와서 가이드 필요 생겼을 때
-  1. 로컬 개발환경에서 docker-compose로 docker 배포환경 셋하고 IDE에서 remote 디버깅 설정하는 방법이 있겠다 [여기처럼](https://dev.gmarket.com/72)
-
-  - OR,
-
-  2. jdk 설치 외 필요한 것들 (db, mq, redis etc) 설치 스크립트 제공할 수 있을것임
-  
-- `1.` 이나 `2.` 방법 모두 `문서` 작성과 제공, 가이드는 필요할 수 밖에 없으므로 상황에 맞게 진행해야 할 것임.
-
-  
 ### OpenJDK 설치
   [가이드대로](https://gonnichiwa.github.io/posts/howto-setup-openjdk-on-mac/)
   설치 한 뒤 gradlew 구동
@@ -77,4 +65,20 @@ $ ./gradlew build
 ...
 BUILD SUCCESSFUL in 10s
 ```
+
+### 사족
+
+- 이렇게 타기종 머신에서 clone받아 환경 세팅할때 자잘한 문제가 생기면 시간 잡아먹고 ~~집에 못가는~~ 요인이 될텐데
+
++ 추가 개발인력이 들어와서 가이드 필요 생겼을 때
+  1. 로컬 개발환경에서 docker-compose로 docker 배포환경 셋하고 IDE에서 remote 디버깅 설정하는 방법이 있겠다 [여기처럼](https://dev.gmarket.com/72)
+
+  - OR,
+
+  2. jdk 설치 외 필요한 것들 (db, mq, redis etc) 설치 스크립트 제공할 수 있을것임
+
+- `1.` 이나 `2.` 방법 모두 `문서` 작성과 제공, 가이드는 필요할 수 밖에 없으므로 상황에 맞게 진행해야 할 것임.
+
+  
+
   

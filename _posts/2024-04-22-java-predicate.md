@@ -55,8 +55,8 @@ public void predicateChaining() {
 
     // Creating predicate
     Predicate<Integer> lowerThanTwenty = (i) -> i < 20;
-    boolean result = greaterThanTen.and(lowerThanTwenty).test(15);
-    System.out.println(result); // true
+    boolean result1 = greaterThanTen.and(lowerThanTwenty).test(15);
+    System.out.println(result1); // true
 
     // Calling Predicate method
     boolean result2 = greaterThanTen.and(lowerThanTwenty).negate().test(15);
@@ -83,18 +83,18 @@ public void predicateChaining() {
 ### 조건 로직
 ```java
 @Test(expected = IllegalArgumentException.class)
-    public void existNumber(){
-        pred(3, i -> i < 7); // Number : 3
-        pred(15, i -> i < 7); // IllegalArgumentException
-    }
+public void existNumber(){
+    pred(3, i -> i < 7); // Number : 3
+    pred(15, i -> i < 7); // IllegalArgumentException
+}
 
-    private void pred(int number, Predicate<Integer> pred){
-        if(pred.test(number)){
-            System.out.println("Number : " + number);
-        } else {
-            throw new IllegalArgumentException("not matched number condition");
-        }
+private void pred(int number, Predicate<Integer> pred){
+    if(pred.test(number)){
+        System.out.println("Number : " + number);
+    } else {
+        throw new IllegalArgumentException("not matched number condition");
     }
+}
 ```
 - Predicate<T>를 인자로 조건 false일 시 예외 발생하는 테스트
 
@@ -156,5 +156,5 @@ assertThat(us.size(), is(2)); // true
 
 
 ### 참고
-https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html
+https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html  
 https://www.geeksforgeeks.org/java-8-predicate-with-examples/
