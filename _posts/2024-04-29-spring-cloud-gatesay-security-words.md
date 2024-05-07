@@ -50,6 +50,7 @@ spring:
 
 - `service-discovery`역할 (서비스 ip, port 전화번호부)
 - `gateway` 가 가지고 있는 api routes에 가지고 있는 `논리이름` 에 해당하는 서버
+- `gateway`와 loadbalancing(lb)하는 복수개의 `service` 서버들이 `scale out` 될 때, 자동으로 연결될 수 있도록 함
 
 
 ### `service`
