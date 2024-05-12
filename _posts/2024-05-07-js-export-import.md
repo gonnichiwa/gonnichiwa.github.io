@@ -67,6 +67,7 @@ user.sayHello(); // John
 - `export default`
 
 ```js
+// currency-functions.js
 const exchangeRate = 0.91;
 
 // 안 내보냄
