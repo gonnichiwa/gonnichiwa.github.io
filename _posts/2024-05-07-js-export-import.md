@@ -133,6 +133,39 @@ describe('sample.spec.js', function() {
 ```
 
 
+### 잘못된 export 예시 : typeError
+
+```js
+// source/sample.js
+export default {
+    plumages(birds) {
+        return new Map(birds.map(b => [b.name, plumage(b)]));
+    },
+    ...
+```
+
+```js
+// importAndUse.js
+import * as sample from '../source/sample.js';
+const result = sample.plumages(data);
+// TypeError: sample.plumages is not a function
+```
+
+- 올바른 방법
+
+```js
+// source/sample.js
+export function plumages(birds) {
+    return new Map(birds.map(b => [b.name, plumage(b)]));
+},
+    ...
+```
+
+
+
+
+
+
 
 <br/>
 
