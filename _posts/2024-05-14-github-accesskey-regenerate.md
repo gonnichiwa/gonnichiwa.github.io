@@ -8,17 +8,21 @@ authors: [gonnichiwa]
 
 ## 작성목적
 
+- github access token regenerate 한 뒤 mac 적용 가이드 기록
+
 ## access key 재발급 github 에서
 
 - github.com 진입, 로그인
 - 계정 _settings_ 진입
 ![](https://blog.kakaocdn.net/dn/b0xDwN/btsHp3GGTUK/IIMm01sfio4QvhhkNebxr0/img.png)
-- _developer settings_-personal access tokens(classic) 진입 [link](https://github.com/settings/tokens)
+- developer settings-personal access tokens(classic) 진입 [link](https://github.com/settings/tokens)
 ![](https://blog.kakaocdn.net/dn/q943L/btsHotT88XL/5963HtVlMfdo2d19Ny99j0/img.png)
-
-- _generate | regenerate_ 한뒤 나온 access token 메모장 복붙하여 저장
+- access token generate | regenerate 한뒤 나온 access token 메모장 복붙하여 저장
 
 ## mac에 access key 적용
+
++ `sourcetree`와 같은 툴에서 최초 push 시 등록하는 경우 있으나 
+  - 기존 push 할때 썼던 access key가 만료되었을 경우 auth error 뱉고 push 불가할 수 있음.
 
 - `command` + `space`, `키체인 관리` 진입
 - `github`로 키체인 검색
