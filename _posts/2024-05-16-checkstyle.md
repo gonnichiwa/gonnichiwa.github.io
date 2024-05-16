@@ -162,3 +162,4 @@ checkstyle-IDEA install, warnings는 accept하고 재시작
 
 [https://checkstyle.org/](https://checkstyle.org/)  
 [https://naver.github.io/hackday-conventions-java/#_gradle](https://naver.github.io/hackday-conventions-java/#_gradle)  
+[https://mslim8803.tistory.com/55](https://mslim8803.tistory.com/55)
