@@ -1,8 +1,8 @@
 ---
 title: lombok annotations-lombok 어노테이션들
 date: 2019-06-26 00:01:00 +0900
-categories: [ORACLE, TUNING]
-tags: [oracle, db, tuning, dbms_xpan]  # TAG names should always be lowercase
+categories: [JAVA]
+tags: [lombok, java]  # TAG names should always be lowercase
 authors: [gonnichiwa]
 ---
 
