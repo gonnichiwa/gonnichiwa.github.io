@@ -37,4 +37,5 @@ authors: [gonnichiwa]
 
 ## 참고
 
+https://profy.dev/article/debug-react-vscode  
 https://itchallenger.tistory.com/904  
