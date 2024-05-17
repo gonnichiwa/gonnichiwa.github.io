@@ -105,6 +105,7 @@ console.log(currency.canadianToUs(30000)); // 27300
 - export
 
 ```js
+//source/sample.js
 export function sampleProvinceData(){
     ...
 }
@@ -120,6 +121,8 @@ export class Producer {
 
 - import
 
+- __`하나의 모듈`(sample.js)에서 `여러 객체들을 export`__ 하고 있으므로 `bracelet {}`으로 묶어서 import 해줘야 한다.
+
 ```js
 import { sampleProvinceData, Province, Producer } from '../source/sample.js';
 import assert from 'assert'; // node_modules에 installed
@@ -131,6 +134,22 @@ describe('sample.spec.js', function() {
     });
 });
 ```
+
+- 위 import 문은 아래와 같이 쓴 것을 하나로 합쳐놓은 것임.
+
+```js
+// import { sampleProvinceData, Province, Producer } from '../source/sample.js';
+import {sampleProvinceData} from '../source/sample.js';
+import {Province} from '../source/sample.js';
+import {Producer} from '../source/sample.js';
+```
+
+- 다른 예로 useState 기능을 쓰는 react 모듈이 있음.
+
+```js
+import {useState} from 'react';
+```
+
 
 
 ### 잘못된 export 예시 : typeError
