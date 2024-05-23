@@ -104,6 +104,19 @@ public void 스트림_연결하기() {
 }
 ```
 
+#### collect(Collectors.joining())
+
+```java
+@Test
+public void collectors(){
+    String[] str = {"a","b","c"};
+    String result = Arrays.stream(str).collect(Collectors.joining());
+    String result2 = String.join("1", str);
+    assertThat(result, is("abc"));
+    assertThat(result2, is("a1b1c"));
+}
+```
+
 #### iterate : iterate(초기값, 식).limit(long 최대크기);
 
 ```java
