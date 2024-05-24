@@ -56,7 +56,7 @@ public void arrayStream(){
     Stream<String> stream = Arrays.stream(arr);
     // 가공, 표현(forEach)
     stream.map(String::toUpperCase)
-            .forEach(x -> System.out::print(x + " ")); // JAVA SCALA GROOVY PYTHON GO SWIFT SCALA GROOVY
+            .forEach(x -> System.out.print(x + " ")); // JAVA SCALA GROOVY PYTHON GO SWIFT SCALA GROOVY
 
     Arrays.stream(arr, 1, 3) // arr[1], arr[2]
             .map(String::toUpperCase)
@@ -292,9 +292,20 @@ public void lazyInvocationTest() {
     // .filter() 동작확인
     System.out.println(Counter.counter); // 3
 }
-
-
 ```
+
+## Collection
+
+- Collections.swap
+
+```java
+int[] arr = {4,3,5,2,3,6};
+List<Integer> nums = Arrays.stream(arr).boxed().collect(Collectors.toList());
+Collections.swap(nums, 1,2);
+System.out.print(nums); // [4, 5, 3, 2, 3, 6]
+```
+
+
 
 ## 감상
 
