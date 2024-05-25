@@ -135,6 +135,8 @@ public void iterate_stream(){
 - Stream\<Wrapper\>로 boxing 가능.
 
 ```java
+import java.util.stream.*;
+
 @Test
 public void primitiveWrapperStream(){
     IntStream intStream = IntStream.range(1,5);
@@ -161,6 +163,7 @@ Stream<Integer> integStream = intStream.boxed(); // java.lang.IllegalStateExcept
 - 그래서 스트림 재사용 방법을 아래처럼 구현함
 
 ```java
+import java.util.stream.*;
 @Test
 public void stream_재사용(){
     // List로 데이터 가지고 있다가
@@ -307,20 +310,47 @@ System.out.print(nums); // [4, 5, 3, 2, 3, 6]
 
 
 
-## 감상
+### 연습
+- https://school.programmers.co.kr/learn/courses/30/lessons/181923
 
-+ 배열과 컬렉션의 함수형 처리 가능하게 함으로써  
-  - 데이터 `처리`와 `표현`이 특화 분리된 기능 설계를 가능하게 함.  
-  - 여기서 `처리`란 데이터 그 자체의 `filtering`, `sorting`, `mapping` 등 있겠음  
+```java
+@Test
+public void solutionT(){
+    int[] arr = {0, 1, 2, 4, 3};
+    int[][] queries = {{0, 4, 2},{0, 3, 2},{0, 2, 2}};
+    /*
+    * 첫 번째 쿼리의 범위에는 0, 1, 2, 4, 3이 있으며 이 중 2보다 크면서 가장 작은 값은 3입니다.
+        두 번째 쿼리의 범위에는 0, 1, 2, 4가 있으며 이 중 2보다 크면서 가장 작은 값은 4입니다.
+        세 번째 쿼리의 범위에는 0, 1, 2가 있으며 여기에는 2보다 큰 값이 없습니다.
+        따라서 [3, 4, -1]을 return 합니다.
 
-  <br/>
+    입출력 예 #1
 
-+ 실무에서의 복잡한 ~~여러개 테이블로 조인된 db 한방쿼리와 난무하는 프로시저~~ 쿼리로직과 modify 어려운 설계구조를 개선할 좋은 재료
-  - application단의 `persistance`계층에서 에서 호출, 생성하는 db쿼리들을 최대한 단순화
-  - 이후 `service`단에서 함수형으로 데이터 stream 생성 조합후 딜리버리
-  - `serviceImpl` 레이어의 비즈로직과 
-  - **대용량 데이터로딩 시점 app단의 memory usage 측정 필요하겠음**
-  - Collectors.summarizingInt(), Collectors.averageInt(), Matching(anyMatch(), allMatch()), 외 그룹핑(Collectors.groupingBy()) 등으로 쿼리 보조가 가능하겠음.
+    첫 번째 쿼리의 범위에는 0, 1, 2, 4, 3이 있으며 이 중 2보다 크면서 가장 작은 값은 3입니다.
+    두 번째 쿼리의 범위에는 0, 1, 2, 4가 있으며 이 중 2보다 크면서 가장 작은 값은 4입니다.
+    세 번째 쿼리의 범위에는 0, 1, 2가 있으며 여기에는 2보다 큰 값이 없습니다.
+    따라서 [3, 4, -1]을 return 합니다.
+    * */
+    int[] result = solution2(arr, queries);
+    for(int i : result){
+        System.out.print(i + " ");
+    }
+}
+
+public int[] solution2(int[] arr, int[][] queries) {
+    int[] answer = {};
+    return IntStream.range(0, queries.length)
+            .map(i -> IntStream.rangeClosed(queries[i][0], queries[i][1])
+                                .map(a -> arr[a])
+                                .filter(a -> a > queries[i][2])
+                                .min().orElse(-1)
+            ).toArray();
+}
+```
+
+
+
+
 
 
 ## 관련 용어
