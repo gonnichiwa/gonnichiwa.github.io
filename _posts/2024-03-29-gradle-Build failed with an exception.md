@@ -1,7 +1,6 @@
 ---
-title: FAILURE- Build failed with an exception.
-Incompatible because this component declares a component for use during compile-time, compatible with Java 17 and the consumer needed a component for use during runtime, compatible with Java 10
-date: 2024-03-28 18:15:00 +0900
+title: FAILURE- Build failed with an exception. Incompatible because this component declares a component for use during compile-time, compatible with Java 17 and the consumer needed a component for use during runtime, compatible with Java 10
+date: 2024-03-29 18:15:00 +0900
 categories: [SPRING, JAVA, MAC, GRADLE]
 tags: [gradle, spring, java, mac]  # TAG names should always be lowercase
 authors: [gonnichiwa]

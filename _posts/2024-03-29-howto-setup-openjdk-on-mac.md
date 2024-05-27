@@ -1,5 +1,5 @@
 ---
-title: gradlew build spring boot proj on mac
+title: setup OPENJDK ON MACOS
 date: 2024-03-29 19:15:00 +0900
 categories: [SPRING, JAVA, MAC, GRADLE]
 tags: [gradle, spring, java, mac]  # TAG names should always be lowercase

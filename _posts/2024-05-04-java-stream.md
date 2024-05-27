@@ -189,7 +189,7 @@ public void 정규식_문자열_split_and_stream(){
     Stream<String> strStream = Pattern.compile(", ")
                         .splitAsStream("Eric, Elena, Java");
     // print
-    strStream.forEach(System.out::println);
+    strStream.forEach(System.out::println); // [Eric, Elena, Java]
 }
 ```
 
@@ -314,10 +314,12 @@ System.out.print(nums); // [4, 5, 3, 2, 3, 6]
 - https://school.programmers.co.kr/learn/courses/30/lessons/181923
 
 ```java
+import java.util.stream.*;
+
 @Test
 public void solutionT(){
     int[] arr = {0, 1, 2, 4, 3};
-    int[][] queries = {{0, 4, 2},{0, 3, 2},{0, 2, 2}};
+    int[][] queries = \{\{0, 4, 2\},\{0, 3, 2\},\{0, 2, 2\}\};
     /*
     * 첫 번째 쿼리의 범위에는 0, 1, 2, 4, 3이 있으며 이 중 2보다 크면서 가장 작은 값은 3입니다.
         두 번째 쿼리의 범위에는 0, 1, 2, 4가 있으며 이 중 2보다 크면서 가장 작은 값은 4입니다.
