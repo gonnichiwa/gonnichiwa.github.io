@@ -47,6 +47,8 @@ authors: [gonnichiwa]
 
 ### 조치
 
+#### clone default autocrlf false
+
 ```cmd
 \> git config --global core.autocrlf false
 \>
@@ -54,10 +56,22 @@ authors: [gonnichiwa]
 
 - 기존 `clone` 받은 `js` app 삭제 후 `다시 clone 받음`
 
+#### vscode new file set lf 처리
+
+- file -> settings -> preference
+![](https://blog.kakaocdn.net/dn/bBRwvZ/btsHUp5t7QJ/NsVOkfhiqiYUjTIBrKejw0/img.png)
+
+- `eol` 검색, `\n` 처리
+![](https://blog.kakaocdn.net/dn/b4RCO1/btsHWd3jIXH/d2csktwqsdbwVjkW1CcfEk/img.png)
+
 
 ## 결과
 
 - prettier 관련 에러 사라짐.
+
+- 새 파일 열었을 때 파일 개행 세팅 자동 `LF` 처리됨 <span style="color:red;">(우하단 참조)</span>
+![](https://blog.kakaocdn.net/dn/bVJVrO/btsHVICKQFy/ureRwnDxTfStAA4twsyjd0/img.png)
+
 
 - 운영 환경 리눅스 | Unix에 올릴거면 에디터 개행 셋을 `lf`로 맞출 필요가 있음.
 
