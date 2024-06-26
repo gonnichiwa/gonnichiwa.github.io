@@ -5,8 +5,7 @@
 1. source clone
 
 ## download ruby
-1. Ruby+Devkit 3.3.0-1 (x64) [download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/
-rubyinstaller-devkit-3.3.0-1-x64.exe)
+1. Ruby+Devkit 3.3.0-1 (x64) [download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
 
 ## install file & setup on cmd
 1. __setup ruby + mingw devkit__
