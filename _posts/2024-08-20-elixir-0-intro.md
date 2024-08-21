@@ -64,6 +64,10 @@ Interactive Elixir (1.17.2) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
 
+- helloworld는 vscode에서 아래처럼 돌려볼 수 있음
+
+![](https://blog.kakaocdn.net/dn/xFw2M/btsJazSC2UU/w9W2t9tX5A8MXABi6buyZ1/img.png)
+
 ### 2-0. 아래 내용 요약
 
 - 가장 기초적인 `type`, `연산`은 언어 공식 doc에 있음
