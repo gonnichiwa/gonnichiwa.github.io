@@ -11,7 +11,7 @@ authors: [gonnichiwa]
 
 ## 0-1. 작성목적
 
- - elixir와 웹프레임워크 phoenix로 사이트 맹글기 찍먹
+ - elixir실행환경과 언어 기본사항 숙지용
 
 ## 1. elixir 실행환경 설정
 
@@ -40,14 +40,6 @@ Erlang/OTP 27 [erts-15.0.1] [source] [64-bit] [smp:16:16] [ds:16:16:10] [async-t
 
 Elixir 1.17.2 (compiled with Erlang/OTP 27)
 ```
-
-+ 튜토리얼 돌려볼려면 `PostgresSQL` 이 필요함
-  - https://www.postgresql.org/download/windows/
-  - 여기서는 `15.8` 다운받음.
-  - 비번 `1234` port `5432`
-  - Locale `Korean, korea` set
-  - `stackbuilder`로 따로 더 설치할거 없으니 체크해제 후 완료처리.
-
 
 ## 2. 쳐보면서 찍먹 해보자
 
