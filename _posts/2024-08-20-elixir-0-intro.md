@@ -314,8 +314,12 @@ iex(110)> elem(a, 0)
 :ok
 ```
 
-### map
+<br/>  
+
 ---
+
+### map
+
 <br/>
 
 ```elixir
@@ -328,8 +332,124 @@ iex(12)> person["age"]
 ```
 
 
+- map 갱신 (**기존 map에 키가 존재할 때만**)
+- 갱신할 때 맵은 **복사되어 생성됨**.
+
+```elixir
+iex(1)> map = %{one: 1, two: 2}
+%{one: 1, two: 2}
+iex(2)> map.one
+1
+iex(3)> map = %{map | one: 111} # 수정하고싶으면 map 재할당
+%{one: 111, two: 2}
+iex(4)> map.one
+111
+```
+
+- 키 추가는 Map.put/3
+
+```elixir
+iex(2)> map = Map.put(map, :hi, "gonnichiwa") # :hi 는 atom
+%{foo: "bar", hello: "world", hi: "gonnichiwa"}
+```
+
+- 삭제는 Map.delete/2
+
+```elixir
+iex(22)> map = Map.delete(map, :a)
+%{c: "c", b: "b", d: "d"}
+iex(23)> map.a
+** (KeyError) key :a not found in: %{c: "c", b: "b", d: "d"}
+    iex:23: (file)
+```
+
+- 그외 Map 관련 문서는 여기 
+- https://hexdocs.pm/elixir/1.12/Map.html
+
+### Enum 모듈
+
+- 열거형은 함수형 프로그래밍의 핵심
+- 지연 열거 (Lazy enumeration) 은 `Stream` 모듈임
+
++ `reduce/3`
+  - /1 : 돌릴 list
+  - /2 : 초기시작값 (optional)
+  - /3 : 계산식
+
+<br/>
+
+- 10 부터 1,2,3 더함 (3 + 2 + 1 + 10)  
+```elixir
+iex> Enum.reduce([1,2,3], 10, fn(x, acc) -> x + acc end)
+16
+```
+
+- 1,2,3 더함
+```elixir
+iex> Enum.reduce([1,2,3], fn(x, acc) -> x + acc end)
+6
+```
+
+- 문자열 ["a","b","c"] + "1" 붙임
+```elixir
+iex> Enum.reduce(["a","b","c"], "1", fn(x, acc) -> x <> acc end)
+"cba1"
+```
+
++ `min/2`, `max/2`
+  - /1 : 돌릴 리스트
+  - /2 : 리스트 비었을 경우 리턴할 값 (**익명함수여야함**)
+
+```elixir
+iex> Enum.min([], fn -> :baz end)
+:baz
+```
+
++ `filter/2`
+  - /1 : 돌릴 리스트
+  - /2 : `true`로 평가될 요소들
+
+- 짝수인 수
+```elixir
+iex> Enum.filter([1,2,3,4], fn(x) -> rem(x,2) == 0 end)
+[2, 4]
+```
+
++ `all?/2`
+  - /1 : 돌릴 list
+  - /2 : 반환할 boolean
+
+- ["foo", "bar", "hello"] 에서 길이가 1 이상이면 `true`
+
+```elixir
+iex(1)> Enum.all?(["foo","bar","hello"], fn(s) -> String.length(s) > 1 end)
+true
+```
 
 
++ `any?/2`
+  - /1 에서 하나라도 조건 맞으면 true
+
+```elixir
+iex> Enum.any?(["foo","bar","hello"], fn(s) -> String.length(s) == 5 end)
+true
+```
+
++ `chunk_every/2`
+  - /1에 주어진 list를
+  - /2 수만큼 list 안의 list로 
+
+```elixir
+iex> Enum.chunk_every([1,2,3,4,5,6], 2)
+[[1, 2], [3, 4], [5, 6]]
+```
+
+
+
+
+---
+
+<br/>
 
 ### pattern matching (`=`)
 
