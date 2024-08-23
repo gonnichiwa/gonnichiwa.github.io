@@ -16,16 +16,6 @@ authors: [gonnichiwa]
 - erlang/OTP `27`
 - elixir `1.17.2`
 
-+ Phoenix db연동해야하니 돌려볼려면 `PostgresSQL` 이 필요함
-  - https://www.postgresql.org/download/windows/
-  - 여기서는 `15.8` 다운받음.
-  - 비번 `1234` port `5432`
-  - Locale `Korean, korea` set
-  - `stackbuilder`로 따로 더 설치할거 없으니 체크해제 후 완료처리.
-
-+ `Docker` 위에서 시험하고 올리는게 정신건강에 좋겠다.
-  - `phoenix` 프레임워크의 deprecated 사항 업데이트 등의 시험이 필수임
-  - 윈도 디렉토리 경로만 바꿔도 서버 start 안됨
 
 
 ## 수행 요약
