@@ -469,6 +469,209 @@ iex(4)> 4 = 2 + 2
 4
 ```
 
+- `tuple`도 마찬가지
+
+```elixir
+iex> {:ok, value} = {:ok, "success"}
+{:ok, "success"}
+iex(2)> value
+"success"
+iex(4)> {:ok, value} = {:error}
+** (MatchError) no match of right hand side value: {:error}
+    (stdlib 6.0.1) erl_eval.erl:652: :erl_eval.expr/6
+    iex:4: (file)
+```
+
+- 패턴매칭은 아래처럼 맵의 인자만 골라낸 패턴 매칭으로 쓸 수 있음.
+
+```elixir
+person = %{name: "jack", age: 34, country: "ko"}
+defmodule Greeter1 do
+  def hello(%{name: person_name} = person) do
+    IO.puts "Hello, " <> person_name
+    IO.inspect(person)
+  end
+end
+
+Greeter1.hello(person)
+# Hello, jack
+# %{name: "jack", age: 34, country: "ko"}
+```
+
+
+### pattern matcing - inside functions 함수내 패턴매칭
+
+- 간단한 함수 선언
+
+```elixir
+iex(72)> road = fn
+...(72)> "high" -> "You take the high road!"
+...(72)> "low" -> "I'll take the low road! (and I'll get there before you)"
+...(72)> end
+#Function<42.39164016/1 in :erl_eval.expr/6>
+
+```
+- `road` fn은 `high` 와 `low` 두개의 `arguments`를 가짐
+- 아래처럼 선언한 함수에 접근 (access)
+
+```elixir
+iex(73)> road.("high")
+"You take the high road!"
+
+iex(74)> road.("low")
+"I'll take the low road! (and I'll get there before you)"
+```
+
+- 없는 `argument` 호출하면 당연 에러
+
+```elixir
+iex(75)> road.("middle")
+** (FunctionClauseError) no function clause matching in :erl_eval."-inside-an-interpreted-fun-"/1
+
+    The following arguments were given to :erl_eval."-inside-an-interpreted-fun-"/1:
+
+        # 1
+        "middle"
+
+    (stdlib 6.0.1) :erl_eval."-inside-an-interpreted-fun-"/1
+    (stdlib 6.0.1) erl_eval.erl:1117: :erl_eval.eval_fun/8
+    iex:72: (file)
+```
+
+#### map을 끼얹으면?
+
+```elixir
+iex(75)> greeting = fn
+...(75)> %{name: name} -> "Hello, #{name}!"
+...(75)> %{} -> "Hello, Anonymous Stranger!"
+...(75)> end
+```
+
+- 이렇게 호출
+
+```elixir
+iex(79)> greeting.(%{name: "Izzy"})
+"Hello, Izzy!"
+
+iex(80)> greeting.(%{name: first_name})
+"Hello, Izzy!"
+```
+
+```elixir
+iex(76)> greeting.(%{})
+"Hello, Anonymous Stranger!"
+```
+
+---
+
+- `default` 파이프라인은 `_`으로 처리
+
+```elixir
+iex(81)> road = fn
+...(81)> "high" -> "You take the high road!"
+...(81)> "low" -> "I'll take the low road! (and I'll get there before you)"
+...(81)> _ -> "Take the 'high' road or the 'low' road, thanks!"
+...(81)> end
+#Function<42.39164016/1 in :erl_eval.expr/6>
+
+iex(82)> road.("middle")
+"Take the 'high' road or the 'low' road, thanks!"
+
+iex(83)> road.("Hhhhhhh")
+"Take the 'high' road or the 'low' road, thanks!"
+
+iex(84)> road.(%{})
+"Take the 'high' road or the 'low' road, thanks!"
+
+iex(85)> road.([])
+"Take the 'high' road or the 'low' road, thanks!"
+```
+
+
+---
+
+### pin 연산자 (`^`)
+
+- `^변수 = 값`
+- `^변수는 위 값으로 고정함.`
+- 돌려보면 신기함
+
+```elixir
+# pin 연산자
+greeting = "Hello"
+greet = fn
+  (^greeting, name) -> "HI, #{name}" #1
+  (greeting, name) -> "#{greeting}.. #{name}!" #2
+end
+
+IO.puts(greet.("Hello","jjj"));    # HI, jjj #1 호출
+IO.puts(greet.("Hellu","hgggg"));  # Hellu.. hgggg!  #2 호출
+```
+- 고정한 값대로 호출 되었으니 `^greeting` 인자 있는 함수 호출됨.
+
+![](https://blog.kakaocdn.net/dn/06Voa/btsJe8tlSBI/BdJ4gluNM7shjAuP1FL1hk/img.png)
+
+- greet fn 이 갖고있는 param 함수들 중 호출 뭘 할지 정할 때
+- `^greeting` 이 붙으면서 `greeting` `값` 보고 어떤 fn param을 호출할 지 결정함
+
+#### pin 연산자 다른 예
+
+```elixir
+# pin 연산자
+pie = 3.14
+case "cherry pie" do
+  ^pie -> IO.puts("Not so tasty")
+  pie -> IO.puts("I bet #{pie} is so tasty")
+end
+# result : I bet cherry pie is so tasty
+```
+- 위 `pie` 값은 3.14로 고정됨.
+- `case`에서 주어진 `cherry pie`는 `^pie` 고정값인 3.14가 아니므로
+- pie -> "I bet #{pie} is so tasty" 호출됨.
+
+
+<br/>
+
+
+### `if`와 `unless`
+
+- if : 우리가 알고 있는 그 if, 조건 `true`
++ unless : 조건 `false`일 때 블록 실행.
+  - if(!condition) 이렇게 적지 말라는 뜻, 보기 힘드니까
+
+```elixir
+iex(4)> if String.valid?("Hello") do
+...(4)> "Valid String"
+...(4)> else
+...(4)> "Invalid string."
+...(4)> end
+"Valid String"
+
+iex(5)> if "a string value" do
+...(5)> "Truthjy"
+...(5)> end
+"Truthjy"
+
+iex(6)> unless is_integer("hihi") do
+...(6)> "Not an Int"
+...(6)> end
+"Not an Int"
+```
+
+### case
+
+- default : `_`
+
+```elixir
+iex(7)> case {1,2,3} do
+...(7)> {1,x,3} when x > 0 -> "will match"
+...(7)> _ -> "Won't match"
+...(7)> end
+"will match"
+```
+
+### with
+
 <br/>
 
 ------
@@ -732,97 +935,6 @@ IO.puts Math.zero?(0) # true
 IO.puts Math.zero?(1) # false
 IO.puts Math.zero?([1,2,3]) # false
 ```
-
-### pattern matcing inside functions 함수내 패턴매칭
-
-- 간단한 함수 선언
-
-```elixir
-iex(72)> road = fn
-...(72)> "high" -> "You take the high road!"
-...(72)> "low" -> "I'll take the low road! (and I'll get there before you)"
-...(72)> end
-#Function<42.39164016/1 in :erl_eval.expr/6>
-
-```
-- `road` fn은 `high` 와 `low` 두개의 `arguments`를 가짐
-- 아래처럼 선언한 함수에 접근 (access)
-
-```elixir
-iex(73)> road.("high")
-"You take the high road!"
-
-iex(74)> road.("low")
-"I'll take the low road! (and I'll get there before you)"
-```
-
-- 없는 `argument` 호출하면 당연 에러
-
-```elixir
-iex(75)> road.("middle")
-** (FunctionClauseError) no function clause matching in :erl_eval."-inside-an-interpreted-fun-"/1
-
-    The following arguments were given to :erl_eval."-inside-an-interpreted-fun-"/1:
-
-        # 1
-        "middle"
-
-    (stdlib 6.0.1) :erl_eval."-inside-an-interpreted-fun-"/1
-    (stdlib 6.0.1) erl_eval.erl:1117: :erl_eval.eval_fun/8
-    iex:72: (file)
-```
-
-#### map을 끼얹으면?
-
-```elixir
-iex(75)> greeting = fn
-...(75)> %{name: name} -> "Hello, #{name}!"
-...(75)> %{} -> "Hello, Anonymous Stranger!"
-...(75)> end
-```
-
-- 이렇게 호출
-
-```elixir
-iex(79)> greeting.(%{name: "Izzy"})
-"Hello, Izzy!"
-
-iex(80)> greeting.(%{name: first_name})
-"Hello, Izzy!"
-```
-
-```elixir
-iex(76)> greeting.(%{})
-"Hello, Anonymous Stranger!"
-```
-
----
-
-- `default` 파이프라인은 `_`으로 처리
-
-```elixir
-iex(81)> road = fn
-...(81)> "high" -> "You take the high road!"
-...(81)> "low" -> "I'll take the low road! (and I'll get there before you)"
-...(81)> _ -> "Take the 'high' road or the 'low' road, thanks!"
-...(81)> end
-#Function<42.39164016/1 in :erl_eval.expr/6>
-
-iex(82)> road.("middle")
-"Take the 'high' road or the 'low' road, thanks!"
-
-iex(83)> road.("Hhhhhhh")
-"Take the 'high' road or the 'low' road, thanks!"
-
-iex(84)> road.(%{})
-"Take the 'high' road or the 'low' road, thanks!"
-
-iex(85)> road.([])
-"Take the 'high' road or the 'low' road, thanks!"
-```
-
-
-
 
 ## 참고
 
