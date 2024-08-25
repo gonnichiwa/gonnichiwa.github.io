@@ -340,7 +340,9 @@ iex(1)> map = %{one: 1, two: 2}
 %{one: 1, two: 2}
 iex(2)> map.one
 1
-iex(3)> map = %{map | one: 111} # 수정하고싶으면 map 재할당
+# 수정하고싶으면 map 재할당
+# | : map 데이터 중 'one' 키의 값은 111임
+iex(3)> map = %{map | one: 111} 
 %{one: 111, two: 2}
 iex(4)> map.one
 111
@@ -365,6 +367,8 @@ iex(23)> map.a
 
 - 그외 Map 관련 문서는 여기 
 - https://hexdocs.pm/elixir/1.12/Map.html
+
+
 
 ### Enum 모듈
 
@@ -870,7 +874,6 @@ working-dir $ iex
 iex(1)> Math.sum(1,2)
 3
 ```
-  
 
 - 컴파일 하면 `Elixir.Math.beam` 바이트코드 파일 생성되어 이게 메모리 올라가서 실행됨
   
@@ -935,6 +938,96 @@ IO.puts Math.zero?(0) # true
 IO.puts Math.zero?(1) # false
 IO.puts Math.zero?([1,2,3]) # false
 ```
+
+
+#### 구조체 (defstruct)
+
+- 아래 참조  
+https://elixirschool.com/ko/lessons/basics/modules#%EA%B5%AC%EC%A1%B0%EC%B2%B4-2
+
+```elixir
+# filename: defstruct.ex
+defmodule Example do
+  @greeting "hihi"
+
+  def greeting(name) do
+    IO.puts ~s(#{@greeting} #{name}.)
+  end
+end
+
+defmodule Example.User do
+  defstruct name: "Sean", roles: []
+end
+```
+
+
+```elixir
+iex> c("defstruct.ex")
+[Example, Example.User, Sayings.Farewells, Sayings.Greetings]
+
+iex> %Example.User{}
+%Example.User<name: "Sean", roles: [], ...>
+
+iex> %Example.User{name: "Steve"}
+%Example.User<name: "Steve", roles: [], ...>
+
+iex> %Example.User{name: "Steve", roles: [:manager]}
+%Example.User<name: "Steve", roles: [:manager]>
+```
+
+
+#### alias, import, require
+
++ `alias` : defmodule 풀네임 그대로 가져올 때
+  - https://elixirschool.com/ko/lessons/basics/modules#alias-4
++ `import` :
+  - https://elixirschool.com/ko/lessons/basics/modules#import-5
++ `require` : 컴파일 후 불러옴
+  - https://elixirschool.com/ko/lessons/basics/modules#require-7
+
+
+#### **use**
+
+- 아래 참조  
+https://elixirschool.com/ko/lessons/basics/modules#use-8
+
+### 정규식
+
+```elixir
+iex> string = "100_000_000"
+"100_000_000"
+
+iex> Regex.split(~r/_/, string) # ~r/_/ 에서 ~r은 sigil
+["100", "000", "000"]
+```
+
+### sigil
+
++ `sigil`에 대한것은 아래 참조
+  - https://elixirschool.com/ko/lessons/basics/sigils
++ `sigil` 기본제공 문법은 여러가지 있음
+
+<br/>
+
++ 소문자면 식 내용 계산을 수행
++ 대문자면 식 내용 그대로를 출력
++ 예시
+```elixir
+iex> ~s/welcome to elixir #{String.downcase "SCHOOL"}/
+"welcome to elixir school"
+
+iex> ~S/welcome to elixir #{String.downcase "SCHOOL"}/
+"welcome to elixir \#{String.downcase \"SCHOOL\"}"
+```
+
+```elixir
+iex> ~c/2 + 7 = #{2 + 7}/
+'2 + 7 = 9'
+
+iex> ~C/2 + 7 = #{2 + 7}/
+'2 + 7 = \#{2 + 7}'
+```
+
 
 ## 참고
 
