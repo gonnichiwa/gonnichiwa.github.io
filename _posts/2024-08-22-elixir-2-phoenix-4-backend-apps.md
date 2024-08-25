@@ -47,7 +47,7 @@ authors: [gonnichiwa]
 - \jbackend\apps\users_api> `mix test`
 
 + routes 확인
-  - \\jbackend\apps\users_api\\> `mix phx.routes`
+  - \\jbackend\apps\users_api> `mix phx.routes`
 
 + 서버 시작
   - \\jbackend\apps> `mix phx.server`
@@ -88,7 +88,7 @@ for each application in the apps/ directory.
 ```
 
 - \\> `cd jbackend`
-- \jbackend\\> `cd apps`
+- \jbackend> `cd apps`
 
 ```
 C:\dev\elixir\phoenixplayground>cd jbackend
@@ -127,8 +127,8 @@ You can also run your app inside IEx (Interactive Elixir) as:
     $ iex -S mix phx.server
 ```
 
-- \jbackend\apps\\> `cd users_api`
-- \jbackend\apps\users_api\> `mix phx.gen.auth Accounts User users`  
+- \jbackend\apps> `cd users_api`
+- \jbackend\apps\users_api> `mix phx.gen.auth Accounts User users`  
 
 ```
 C:\dev\elixir\phoenixplayground\jbackend\apps\users_api>mix phx.gen.auth Accounts User users
@@ -151,7 +151,7 @@ to create your account and then access "/dev/mailbox" to
 see the account confirmation email.
 ```
 
-+ \jbackend\apps\users_api\> `mix ecto.migrate` 하면 에러 뜰것임.
++ \jbackend\apps\users_api> `mix ecto.migrate` 하면 에러 뜰것임.
   - db 접속정보 수정 필요
   - `\jbackend\config\dev.exs`
   - `\jbackend\config\test.exs`
@@ -217,7 +217,7 @@ Then, instead of importing your backend, call this in your module:
 ## 돌려보자
 
 + routes 확인
-  - \\jbackend\apps\users_api\\> `mix phx.routes`
+  - \\jbackend\apps\users_api> `mix phx.routes`
 
 ```
   GET     /                                      UsersApiWeb.PageController :home
@@ -264,6 +264,6 @@ Then, instead of importing your backend, call this in your module:
 
 ## 참고
 
-https://elixirschool.com/ko/lessons/advanced/umbrella_projects
-https://hexdocs.pm/phoenix/mix_phx_gen_auth.html
-https://hexdocs.pm/phoenix/api_authentication.html
+https://elixirschool.com/ko/lessons/advanced/umbrella_projects  
+https://hexdocs.pm/phoenix/mix_phx_gen_auth.html  
+https://hexdocs.pm/phoenix/api_authentication.html  
