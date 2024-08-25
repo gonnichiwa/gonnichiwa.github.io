@@ -176,7 +176,7 @@ Generated users_api app
 
 ![](https://blog.kakaocdn.net/dn/cK1Utb/btsJfQTemUG/7xkpghj3AWN6kSLAU47IcK/img.png)
 
-  - \\> `mix deps.get`
+  - \jbackend> `mix deps.get`
   - 의존 빌드 역할 수행
   - `mix ecto.migrate` 전에 하는게 안전함
 ```
@@ -190,7 +190,7 @@ Unchanged:
 All dependencies are up to date
 ```
 
-- \\> `mix test`
+- \jbackend> `mix test`
 
 ```
 주절주절 성공
@@ -238,7 +238,7 @@ Then, instead of importing your backend, call this in your module:
 ```
 
 + 서버 시작
-  - \\> `mix phx.server`
+  - \jbackend> `mix phx.server`
   - 아래 `warning`은 관리자모드 실행 필요 메세지 (권장)
   - 루트인 `jbackend` 에서 커맨드 실행시 모든 app 동작
 ```
