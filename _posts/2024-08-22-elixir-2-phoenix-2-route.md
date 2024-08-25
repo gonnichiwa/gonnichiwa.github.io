@@ -43,7 +43,17 @@ authors: [gonnichiwa]
 ![](https://blog.kakaocdn.net/dn/p4CCv/btsJcQlCIbV/zEGxusCDQkHnUSpaJH1Isk/img.png)
 
 
+### 서비스중인 routes 모두 보기
 
+- `mix phx.routes`  
+```elixir
+C:...jwtdb>mix phx.routes
+...
+  GET    /                                      JwtdbWeb.PageController :home
+  GET    /hello                                 JwtdbWeb.HelloController :index
+  GET    /hello/:messenger                      JwtdbWeb.HelloController :show
+...
+```
 
 
   

@@ -41,6 +41,8 @@ authors: [gonnichiwa]
 + web browser 결과 확인
 + shutdown
   - `Ctrl` + `c` 두번
++ 빌드
+  - `mix deps.get`
 
 ---
 
@@ -143,6 +145,11 @@ Done in 379ms.
 ### shutdown
 
 - `ctrl+c` 두번
+
++ (windows) 아래처럼 `inotify-win` 프로세스 정상종료 안될 때 있음
+  - 작업관리자 (ctrl + shift + esc) - 프로세스탭 - 백그라운드 프로세스 에서 찾아서 종료  
+  
+![](https://blog.kakaocdn.net/dn/AfdDT/btsJd1PJftz/4EfP8QJ9li8obGHof97aEk/img.png)
 
 ## 참고
 
