@@ -62,7 +62,8 @@ authors: [gonnichiwa]
 ## 수행상세
 
 + `umbrella` project 생성
-  - \\> `mix new jbackend --umbrella`
+  - \\> `mix new jbackend --umbrella`  
+
 ```elixir
 \> mix new jbackend --umbrella
 * creating README.md
@@ -94,7 +95,8 @@ C:\dev\elixir\phoenixplayground>cd jbackend
 C:\dev\elixir\phoenixplayground\jbackend>cd apps
 ```
 
-- \jbackend\apps\\> `mix phx.new users_api`
+- \jbackend\apps> `mix phx.new users_api`  
+
 ```
 C:\dev\elixir\phoenixplayground\jbackend\apps>mix phx.new users_api
 
@@ -126,7 +128,8 @@ You can also run your app inside IEx (Interactive Elixir) as:
 ```
 
 - \jbackend\apps\\> `cd users_api`
-- \jbackend\apps\users_api\> `mix phx.gen.auth Accounts User users`
+- \jbackend\apps\users_api\> `mix phx.gen.auth Accounts User users`  
+
 ```
 C:\dev\elixir\phoenixplayground\jbackend\apps\users_api>mix phx.gen.auth Accounts User users
 An authentication system can be created in two different ways:
@@ -137,11 +140,11 @@ Compiling 15 files (.ex)
 ...
 Please re-fetch your dependencies with the following command:
 
-    $ mix deps.get
+$ mix deps.get
 
 Remember to update your repository by running migrations:
 
-    $ mix ecto.migrate
+$ mix ecto.migrate
 
 Once you are ready, visit "/users/register"
 to create your account and then access "/dev/mailbox" to
@@ -158,7 +161,8 @@ see the account confirmation email.
 ![](https://blog.kakaocdn.net/dn/lTJOY/btsJfS4z2rS/OOaevgsJmLk5sEpUijAjWk/img.png)
 
 
-- 다시 \\> `mix ecto.migrate`
+- 다시 \\> `mix ecto.migrate`  
+
 ```
 C:...\users_api>mix ecto.migrate
 Compiling 28 files (.ex)

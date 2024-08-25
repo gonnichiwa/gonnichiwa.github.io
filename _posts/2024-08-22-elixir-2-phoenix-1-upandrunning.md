@@ -33,6 +33,7 @@ authors: [gonnichiwa]
 - https://hexdocs.pm/phoenix/up_and_running.html
 + 시작 전 setting
   - `플젝생성` : `$ mix phx.new hello`
+  - `다중app플젝 생성` : `$ mix phx.new hello --umbrella`
   - `db 연결셋` : `config/dev.exs`
   - `db repo 생성` : `$ mix ecto.create`
   - deprecated 메세지 뜰 시 처리
@@ -148,7 +149,7 @@ Done in 379ms.
 
 + (windows) 아래처럼 `inotify-win` 프로세스 정상종료 안될 때 있음
   - 작업관리자 (ctrl + shift + esc) - 프로세스탭 - 백그라운드 프로세스 에서 찾아서 종료  
-  
+
 ![](https://blog.kakaocdn.net/dn/AfdDT/btsJd1PJftz/4EfP8QJ9li8obGHof97aEk/img.png)
 
 ## 참고
